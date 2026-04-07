@@ -1,0 +1,28 @@
+package HZ.CrudApplication.Controller;
+
+import HZ.CrudApplication.Models.Product;
+import HZ.CrudApplication.Services.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
+
+@Controller
+@RequestMapping("/product")
+public class ProductController {
+    @Autowired
+    private ProductService proSer;
+
+    @PostMapping("/creat-product")
+    public Product createProduct(Product product){
+        return proSer.createProduct(product);
+    }
+
+    @GetMapping("/get-all-products")
+    public List<Product> getAllProduct(){
+        return proSer.getAllProduct();
+    }
+}
